@@ -1,0 +1,12 @@
+This is a placeholder. Replace this file with the provided AuraCare logo image at this path:
+
+assets/images/logo.png
+
+Recommended filename: logo.png
+Recommended formats: PNG (preferred) or WEBP/SVG for best quality and small size.
+
+To replace:
+1. Save the attached image as "logo.png" into this folder.
+2. Refresh your browser to see the new header logo.
+
+If you'd like, I can embed the supplied image as a data URI directly in the HTML instead — tell me if you want that.

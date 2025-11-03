@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AuraCare — Period Care & Sanitary Pads</title>
+        <meta name="description" content="AuraCare sanitary pads: ultra-thin, skin-friendly, and sustainably packaged. Find comfort, protection, and confidence every day of the month." />
+    <meta name="theme-color" content="#35509A" />
+        <!-- Open Graph -->
+        <meta property="og:site_name" content="AuraCare" />
+        <meta property="og:title" content="AuraCare — Period Care & Sanitary Pads" />
+        <meta property="og:description" content="Ultra-thin, skin-friendly sanitary pads with advanced leak protection and sustainable packaging." />
+        <meta property="og:type" content="website" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        />
+        <!-- Preload hero image (improves LCP) -->
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1400&q=80" />
+            <style>
+                :root{
+                    /* Brand tokens tuned to the uploaded blue & cream logo */
+                    --brand-50: #f7f6f2;   /* cream */
+                    --brand-500: #4661A3;  /* lighter blue */
+                    --brand-600: #35509A;  /* primary brand blue (used where pink-600 was) */
+                    --brand-700: #2b3f78;  /* darker blue for hover */
+                }
+
+                body {
+                    font-family: 'Inter', sans-serif;
+                }
+
+                /* small visual tweak for hero SVG layering */
+                .hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
+                main { isolation: isolate; }
+
+                     /* Brand utility classes mapped to tokens (used in markup) */
+                     .text-brand-600 { color: var(--brand-600) !important; }
+                     .text-brand-700 { color: var(--brand-700) !important; }
+                     .text-brand-500 { color: var(--brand-500) !important; }
+
+                     .bg-brand-600 { background-color: var(--brand-600) !important; }
+                     .hover\:bg-brand-700:hover { background-color: var(--brand-700) !important; }
+                     .bg-brand-50 { background-color: var(--brand-50) !important; }
+
+                     .from-brand-50 { --tw-gradient-from: var(--brand-50) !important; }
+                     .to-brand-50 { --tw-gradient-to: var(--brand-50) !important; }
+
+                     .focus\:ring-brand-500:focus { --tw-ring-color: var(--brand-500) !important; }
+                     .focus\:border-brand-500:focus { border-color: var(--brand-500) !important; }
+
+                     .hover\:text-brand-700:hover { color: var(--brand-700) !important; }
+
+                     /* Ensure anchor underlines that used pink show brand colour */
+                     a.underline, .underline { text-decoration-color: var(--brand-600); }
+
+                     /* Primary button helper mapped to brand */
+                            .btn-primary { display: inline-block; padding: .6rem 1.1rem; background-color: var(--brand-600); color: white; border-radius: .5rem; font-weight: 600; transition: transform .18s ease, background-color .18s ease; will-change: transform; }
+                            .btn-primary:hover { background-color: var(--brand-700); transform: translateY(-4px); }
+                            .btn-primary:focus { outline: none; box-shadow: 0 6px 18px rgba(53,80,154,0.12); }
+
+                            /* Subtle hero float animation for decorative circles */
+                            @keyframes float-slow { from { transform: translateY(0);} to { transform: translateY(-14px);} }
+                            .hero-circle-anim { animation: float-slow 8s ease-in-out infinite alternate; }
+
+                            /* Respect reduced motion */
+                            @media (prefers-reduced-motion: reduce) {
+                                .hero-circle-anim { animation: none !important; }
+                                .btn-primary { transition: none !important; transform: none !important; }
+                            }
+
+                /* Small helper to keep logos responsive */
+                .site-logo { max-height: 88px; width: auto; }
+                .site-logo-sm { max-height: 56px; width: auto; }
+            </style>
+        <!-- Local built Tailwind (optional) -->
+        <link rel="stylesheet" href="dist/styles.css" />
+    </head>
+
+    <body class="antialiased text-gray-800">
+        <!-- Header -->
+        <header class="fixed z-50 w-full shadow-sm bg-white/90 backdrop-blur-sm">
+            <div class="container px-4 py-4 mx-auto">
+                <nav class="relative flex items-center justify-between" aria-label="Main navigation">
+                    <!-- Left: logo only -->
+                    <div class="flex items-center">
+                        <a href="#" class="inline-flex items-center gap-3">
+                            <img src="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" alt="AuraCare logo" width="88" height="88" class="object-contain site-logo" srcset="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png 1x" />
+                            <span class="sr-only">AuraCare — Period care & sanitary pads</span>
+                        </a>
+                    </div>
+
+                    <!-- Center: primary nav (centered on desktop) -->
+                    <div class="hidden md:flex md:items-center md:justify-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:z-20">
+                        <div class="items-center space-x-4 md:flex" role="menubar" aria-label="Primary">
+                            <a href="#" class="text-gray-600 transition-colors hover:text-brand-600" role="menuitem">Home</a>
+                            <a href="#about" class="text-gray-600 transition-colors hover:text-brand-600" role="menuitem">About</a>
+
+                            <!-- Shop dropdown (desktop) -->
+                            <div class="relative" id="shop-nav">
+                                <button id="shop-toggle" aria-expanded="false" aria-haspopup="true" class="flex items-center gap-2 px-2 py-1 text-gray-600 transition-colors rounded hover:text-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-500" role="menuitem">
+                                    <span>Shop</span>
+                                    <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </button>
+
+                                <div id="shop-dropdown" class="absolute right-0 z-50 hidden mt-2 bg-white border rounded-lg shadow-lg w-72" role="menu" aria-label="Shop menu">
+                                    <div class="grid gap-2 p-3">
+                                        <a href="#products" class="block px-3 py-2 rounded hover:bg-brand-50 focus:bg-brand-50" role="menuitem">AuraComfort Ultra <span class="text-xs text-gray-500">— Best seller</span></a>
+                                        <a href="#products" class="block px-3 py-2 rounded hover:bg-brand-50 focus:bg-brand-50" role="menuitem">AuraThin</a>
+                                        <a href="#products" class="block px-3 py-2 rounded hover:bg-brand-50 focus:bg-brand-50" role="menuitem">AuraOvernight</a>
+                                        <a href="#products" class="block px-3 py-2 rounded hover:bg-brand-50 focus:bg-brand-50" role="menuitem">Starter Trial Pack</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#faq" class="text-gray-600 transition-colors hover:text-brand-600" role="menuitem">FAQ</a>
+                            <a href="#contact" class="text-gray-600 transition-colors hover:text-brand-600" role="menuitem">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- Right: CTA (desktop) + mobile menu button -->
+                    <div class="flex items-center space-x-4">
+                        <a href="#products" class="hidden px-4 py-2 text-sm font-semibold text-white rounded-full md:inline-block bg-brand-600 hover:bg-brand-700">Shop now</a>
+
+                        <button id="menu-open" class="text-gray-600 md:hidden" aria-label="Open menu">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+            <!-- Hero -->
+            <main>
+            <section class="relative pt-32 pb-20 overflow-hidden md:pt-36 bg-gradient-to-br from-brand-50 to-white">
+                <!-- subtle decorative background -->
+                <svg class="hero-bg" aria-hidden="true" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+                    <defs>
+                        <linearGradient id="g" x1="0%" x2="100%">
+                            <stop offset="0%" stop-color="var(--brand-50)" />
+                            <stop offset="100%" stop-color="#ffffff" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="800" height="600" fill="url(#g)"></rect>
+                    <circle class="hero-circle-anim" cx="680" cy="-40" r="220" fill="var(--brand-50)" opacity="0.85" />
+                    <circle class="hero-circle-anim" cx="120" cy="520" r="180" fill="var(--brand-50)" opacity="0.6" />
+                </svg>
+
+                <div class="container px-4 mx-auto">
+                    <div class="grid items-center gap-8 md:grid-cols-2">
+                        <!-- Hero text -->
+                        <div class="max-w-2xl mx-auto text-center md:text-left">
+                            <p class="mb-3 text-sm font-semibold tracking-wider uppercase text-brand-600">Dermatologically tested • Made in South Africa</p>
+                            <h1 class="mb-4 text-4xl font-extrabold text-gray-900 md:text-5xl">Confidence. Comfort. Protection — every day.</h1>
+                            <p class="mb-6 text-lg text-gray-600">Soft, secure sanitary pads that move with you — ultra-thin absorption and leak-lock technology for total peace of mind.</p>
+
+                            <div class="flex flex-col items-center gap-3 sm:flex-row sm:items-center sm:justify-start">
+                                <a href="#products" class="inline-flex items-center justify-center btn-primary">Shop now</a>
+                                <a href="#contact" class="inline-block px-4 py-2 ml-0 font-medium border rounded border-brand-600 text-brand-600 hover:bg-brand-50">Request a free sample</a>
+                            </div>
+
+                            <p class="mt-4 text-sm text-gray-500">Free shipping on orders over R500 within South Africa • 30-day satisfaction guarantee</p>
+
+                            <!-- Trust badges -->
+                            <div class="flex flex-wrap items-center gap-3 mt-4">
+                                <span class="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded bg-brand-50 text-brand-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    Dermatologically tested
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded bg-brand-50 text-brand-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 4-3 7-7 7"/></svg>
+                                    Made in SA
+                                </span>
+                                <span class="inline-flex items-center gap-2 px-3 py-1 text-sm font-medium rounded bg-brand-50 text-brand-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h8m-8 4h6"/></svg>
+                                    30-day satisfaction guarantee
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Hero image (right on desktop) -->
+                        <div class="order-first max-w-2xl mx-auto md:order-none md:mx-0">
+                            <img loading="eager" decoding="async" width="1400" height="900" src="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1400&q=80" srcset="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=800&q=80 800w, https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1200&q=80 1200w, https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1400&q=80 1400w" sizes="(max-width: 768px) 100vw, 50vw" alt="AuraCare product pack on soft fabric" class="object-cover w-full h-auto rounded-lg shadow-xl" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- About -->
+            </main>
+
+        <section id="about" class="py-20 bg-white">
+            <div class="container px-4 mx-auto">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="mb-4 text-3xl font-bold md:text-4xl">About AuraCare</h2>
+                    <p class="mb-6 text-lg text-gray-600">We make period care that fits your life — ultra-thin protection, skin-friendly materials, and sustainably-minded packaging. Trusted by thousands across South Africa.</p>
+                </div>
+
+                <!-- Stats row -->
+                <div class="grid grid-cols-1 gap-4 mt-8 md:grid-cols-3">
+                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50">
+                        <div class="text-2xl font-extrabold text-brand-600">120k+</div>
+                        <div class="mt-1 text-sm text-gray-600">Packs sold</div>
+                    </div>
+                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50">
+                        <div class="text-2xl font-extrabold text-brand-600">4.8★</div>
+                        <div class="mt-1 text-sm text-gray-600">Average rating</div>
+                    </div>
+                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50">
+                        <div class="text-2xl font-extrabold text-brand-600">98%</div>
+                        <div class="mt-1 text-sm text-gray-600">Customer satisfaction</div>
+                    </div>
+                </div>
+
+                <div class="grid items-center gap-8 mt-10 md:grid-cols-2">
+                    <!-- Image -->
+                        <div class="order-last md:order-first">
+                            <!-- Constrain height so the image isn't overly tall on desktop; object-cover keeps composition -->
+                            <img loading="lazy" decoding="async" width="1000" height="700" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80" srcset="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80 600w, https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80 1000w" sizes="(max-width: 768px) 100vw, 50vw" alt="Woman smiling holding pads" class="object-cover w-full h-56 rounded-lg shadow-xl md:h-72 lg:h-96" />
+                        </div>
+
+                    <!-- Content -->
+                    <div>
+                        <h3 class="mb-4 text-2xl font-semibold">Period care designed for real life</h3>
+                        <p class="mb-6 text-gray-600">AuraCare engineers pads to deliver discreet comfort and reliable protection — whether you're at work, in the gym, or sleeping. Our designs prioritise breathability, fit, and low environmental impact.</p>
+
+                        <div class="grid gap-4 sm:grid-cols-3">
+                            <div class="p-4 text-center border rounded-lg">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.657 0 3-1.567 3-3.5S13.657 1 12 1 9 2.567 9 4.5 10.343 8 12 8zM4 13h16M4 17h16"/></svg>
+                                <div class="font-semibold">Ultra-thin</div>
+                                <div class="text-sm text-gray-500">High absorbency, low bulk</div>
+                            </div>
+                            <div class="p-4 text-center border rounded-lg">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                <div class="font-semibold">Skin-friendly</div>
+                                <div class="text-sm text-gray-500">Hypoallergenic layers</div>
+                            </div>
+                            <div class="p-4 text-center border rounded-lg">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
+                                <div class="font-semibold">Sustainable</div>
+                                <div class="text-sm text-gray-500">Low-waste packaging</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 mt-6">
+                            <a href="#products" class="btn-primary">Shop our pads</a>
+                            <a href="#contact" class="inline-block px-4 py-2 text-sm font-medium border rounded border-brand-600 text-brand-600 hover:bg-brand-50">Wholesale & bulk</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section id="products" class="py-20 bg-gray-50">
+            <div class="container px-4 mx-auto">
+                <div class="flex flex-col items-center justify-between md:flex-row md:items-end">
+                    <h2 class="mb-6 text-3xl font-bold text-center md:text-left md:mb-0 md:text-4xl">Our Pads</h2>
+                    <p class="max-w-xl text-sm text-gray-600">Premium period care engineered in South Africa — choose the fit and absorbency that matches your days. Wholesale & subscriptions available.</p>
+                </div>
+
+                <div class="grid gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3">
+                    <!-- Product card (reusable pattern) -->
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                        <div class="relative">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1541575163232-2a2d2a9f6e8f?auto=format&fit=crop&w=800&q=80" alt="AuraComfort Ultra pack - best seller" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
+                            <span class="absolute px-2 py-1 text-xs font-semibold text-white rounded top-3 left-3 bg-brand-600">Best seller</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold">AuraComfort Ultra</h3>
+                            <div class="flex items-center gap-3 mt-2">
+                                <div class="flex items-center text-yellow-400">★★★★★</div>
+                                <div class="text-sm text-gray-500">4.8 (3.1k)</div>
+                            </div>
+                            <p class="mt-3 text-gray-600">Ultra-thin core with leak-lock channels — daytime protection with breathable comfort.</p>
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="text-lg font-bold">R79</div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#contact" class="px-3 py-2 text-sm font-medium border rounded border-brand-600 text-brand-600 hover:bg-brand-50">Find out more</a>
+                                    <button aria-label="Buy AuraComfort Ultra" class="btn-primary">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                        <div class="relative">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="AuraThin pad on fabric" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
+                            <span class="absolute px-2 py-1 text-xs font-semibold text-white bg-gray-800 rounded top-3 left-3">Slim</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold">AuraThin</h3>
+                            <div class="flex items-center gap-3 mt-2"><div class="text-yellow-400">★★★★☆</div><div class="text-sm text-gray-500">4.6 (1.2k)</div></div>
+                            <p class="mt-3 text-gray-600">Minimal bulk for discretion on light days — comfortable and secure.</p>
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="text-lg font-bold">R69</div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#contact" class="px-3 py-2 text-sm font-medium border rounded border-brand-600 text-brand-600 hover:bg-brand-50">Find out more</a>
+                                    <button aria-label="Buy AuraThin" class="btn-primary">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                        <div class="relative">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="AuraOvernight pad" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
+                            <span class="absolute px-2 py-1 text-xs font-semibold text-white rounded top-3 left-3 bg-brand-600">Overnight</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold">AuraOvernight</h3>
+                            <div class="flex items-center gap-3 mt-2"><div class="text-yellow-400">★★★★☆</div><div class="text-sm text-gray-500">4.7 (900)</div></div>
+                            <p class="mt-3 text-gray-600">Longer design and enhanced absorbency for undisturbed sleep.</p>
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="text-lg font-bold">R89</div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#contact" class="px-3 py-2 text-sm font-medium border rounded border-brand-600 text-brand-600 hover:bg-brand-50">Find out more</a>
+                                    <button aria-label="Buy AuraOvernight" class="btn-primary">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Additional products (kept concise) -->
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                        <div class="relative">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=800&q=80" alt="AuraSensitive pack" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold">AuraSensitive</h3>
+                            <p class="mt-3 text-gray-600">Hypoallergenic, fragrance-free layers for the most sensitive skin.</p>
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="text-lg font-bold">R79</div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#contact" class="px-3 py-2 text-sm font-medium border rounded border-brand-600 text-brand-600 hover:bg-brand-50">Find out more</a>
+                                    <button aria-label="Buy AuraSensitive" class="btn-primary">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                        <div class="relative">
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Starter Trial pack" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
+                            <span class="absolute px-2 py-1 text-xs font-semibold text-gray-800 bg-yellow-400 rounded top-3 right-3">New</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-semibold">Starter Trial Pack</h3>
+                            <p class="mt-3 text-gray-600">A curated mix of daytime and overnight pads to help you find the perfect fit.</p>
+                            <div class="flex items-center justify-between mt-4">
+                                <div class="text-lg font-bold">R49</div>
+                                <div class="flex items-center gap-2">
+                                    <a href="#contact" class="px-3 py-2 text-sm font-medium border rounded border-brand-600 text-brand-600 hover:bg-brand-50">Find out more</a>
+                                    <button aria-label="Buy Starter Trial Pack" class="btn-primary">Buy</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section aria-labelledby="testimonials-heading" class="py-16 bg-white">
+            <div class="container px-4 mx-auto">
+                <h2 id="testimonials-heading" class="mb-8 text-3xl font-bold text-center">What customers say</h2>
+                <div class="grid gap-6 md:grid-cols-3">
+                    <figure class="p-6 rounded-lg bg-gray-50">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=128&q=80" alt="Customer avatar" class="w-12 h-12 mb-4 rounded-full" />
+                        <blockquote class="italic text-gray-700">"Feels like wearing nothing — yet I never worry about leaks. AuraComfort changed my monthly routine."</blockquote>
+                        <figcaption class="mt-3 text-sm text-gray-600">— Maya R., Verified buyer</figcaption>
+                    </figure>
+                    <figure class="p-6 rounded-lg bg-gray-50">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=128&q=80" alt="Customer avatar" class="w-12 h-12 mb-4 rounded-full" />
+                        <blockquote class="italic text-gray-700">"No irritation and sustainable packaging. Finally a brand I can trust."</blockquote>
+                        <figcaption class="mt-3 text-sm text-gray-600">— Olivia T., Repeat customer</figcaption>
+                    </figure>
+                    <figure class="p-6 rounded-lg bg-gray-50">
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1545996124-1f1f1b2b9f4f?auto=format&fit=crop&w=128&q=80" alt="Customer avatar" class="w-12 h-12 mb-4 rounded-full" />
+                        <blockquote class="italic text-gray-700">"Overnight coverage was a game changer. I can sleep through the night worry-free."</blockquote>
+                        <figcaption class="mt-3 text-sm text-gray-600">— Sofia L., Customer</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section aria-labelledby="faq-heading" class="py-16 bg-gray-50">
+            <div class="container px-4 mx-auto">
+                <h2 id="faq-heading" class="mb-3 text-3xl font-bold text-center">Frequently asked questions</h2>
+                <p class="max-w-2xl mx-auto mb-8 text-sm text-center text-gray-600">Quick answers to common questions — if you need more help our team is ready to assist via phone or email.</p>
+
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="overflow-hidden border rounded-lg">
+                        <button id="faq-btn-1" aria-expanded="false" aria-controls="faq-panel-1" class="flex items-center justify-between w-full px-5 py-4 text-left faq-toggle">
+                            <span class="font-medium">Are AuraCare pads suitable for sensitive skin?</span>
+                            <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+                        </button>
+                        <div id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" class="hidden px-5 py-4 faq-panel">Yes — our AuraSensitive line is hypoallergenic, fragrance-free, and dermatologically tested. We avoid common irritants and use breathable materials.</div>
+                    </div>
+
+                    <div class="overflow-hidden border rounded-lg">
+                        <button id="faq-btn-2" aria-expanded="false" aria-controls="faq-panel-2" class="flex items-center justify-between w-full px-5 py-4 text-left faq-toggle">
+                            <span class="font-medium">How long does shipping take?</span>
+                            <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+                        </button>
+                        <div id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" class="hidden px-5 py-4 faq-panel">Standard shipping is 3–7 business days within South Africa. Expedited options and express courier add-ons are available at checkout.</div>
+                    </div>
+
+                    <div class="overflow-hidden border rounded-lg">
+                        <button id="faq-btn-3" aria-expanded="false" aria-controls="faq-panel-3" class="flex items-center justify-between w-full px-5 py-4 text-left faq-toggle">
+                            <span class="font-medium">Can I return unopened packs?</span>
+                            <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+                        </button>
+                        <div id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" class="hidden px-5 py-4 faq-panel">Yes — unopened packs may be returned within 30 days for a refund. For hygiene reasons opened packs are not eligible. See returns policy for details.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container px-4 mx-auto">
+                <h2 class="mb-8 text-3xl font-bold text-center md:text-4xl">Get in touch</h2>
+
+                <div class="grid gap-10 md:grid-cols-2">
+                    <!-- Contact info (left) -->
+                    <div class="max-w-md">
+                        <p class="mb-4 text-gray-600">We're here to help — for wholesale enquiries, samples, or product questions reach out below or call our Customer Care.</p>
+
+                        <div class="mb-6">
+                            <h3 class="mb-2 text-sm font-semibold">Customer Care</h3>
+                            <p class="text-gray-700">+27 (0)21 555 1234</p>
+                            <p class="mt-1 text-sm text-gray-500">Mon–Fri, 08:00–17:00 SAST</p>
+                        </div>
+
+                        <div class="mb-6">
+                            <h3 class="mb-2 text-sm font-semibold">Email</h3>
+                            <a href="mailto:support@auracare.co.za" class="text-brand-600 hover:underline">support@auracare.co.za</a>
+                        </div>
+
+                        <div class="mb-6">
+                            <h3 class="mb-2 text-sm font-semibold">Head Office</h3>
+                            <address class="not-italic text-gray-700">Unit 5, Health House, Cape Town, South Africa</address>
+                        </div>
+
+                        <div class="p-4 rounded-lg bg-brand-50">
+                            <h4 class="mb-2 text-sm font-semibold">Wholesale & Bulk</h4>
+                            <p class="text-sm text-gray-600">Preferential pricing for clinics and retailers — contact us for a quote and lead times.</p>
+                            <a href="#contact" class="inline-block px-3 py-2 mt-3 text-sm font-medium border rounded border-brand-600 text-brand-600 hover:bg-white">Request wholesale</a>
+                        </div>
+                    </div>
+
+                    <!-- Contact form (right) -->
+                    <div>
+                        <form id="contact-form" class="p-6 space-y-4 bg-white border rounded-lg shadow-sm">
+                            <div class="grid gap-4 sm:grid-cols-2">
+                                <div>
+                                    <label for="name" class="block mb-1 text-sm font-medium text-gray-700">Full name</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+                                </div>
+                                <div>
+                                    <label for="phone" class="block mb-1 text-sm font-medium text-gray-700">Phone (optional)</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block mb-1 text-sm font-medium text-gray-700">Email address</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
+                            </div>
+
+                            <div>
+                                <label for="message" class="block mb-1 text-sm font-medium text-gray-700">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500"></textarea>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <input id="sample" name="sample" type="checkbox" class="w-4 h-4 border-gray-300 rounded text-brand-600 focus:ring-brand-500" />
+                                <label for="sample" class="text-sm text-gray-600">I'd like to request a free sample</label>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="w-full px-6 py-3 font-semibold text-white rounded-lg bg-brand-600 hover:bg-brand-700">Send message</button>
+                                <p id="form-response" class="hidden mt-2 text-sm text-green-600">Thanks — we’ll reply within 1-2 business days.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 text-white bg-gray-900">
+            <div class="container px-4 mx-auto">
+                <div class="grid gap-8 md:grid-cols-4">
+                    <div>
+                        <h3 class="mb-4 text-xl font-bold">AuraCare</h3>
+                        <p class="text-gray-400">Period care made for comfort, confidence, and sustainability.</p>
+                    </div>
+                    <div>
+                        <h4 class="mb-4 text-lg font-semibold">Shop</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#products" class="text-gray-400 transition-colors hover:text-white">All Pads</a></li>
+                            <li><a href="#products" class="text-gray-400 transition-colors hover:text-white">Starter Pack</a></li>
+                            <li><a href="#contact" class="text-gray-400 transition-colors hover:text-white">Wholesale</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="mb-4 text-lg font-semibold">Support</h4>
+                                    <ul class="space-y-2 text-gray-400">
+                                        <li>Customer Care: +27 (0)21 555 1234 (Mon–Fri, 08:00–17:00 SAST)</li>
+                                        <li>Email: support@auracare.co.za</li>
+                                        <li>FAQ & Returns</li>
+                                    </ul>
+                    </div>
+                    <div>
+                        <h4 class="mb-4 text-lg font-semibold">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 transition-colors hover:text-white" aria-label="Instagram">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.8.1 4.9.3 4.1.6 3.2 1 2.5 1.5 1.8 2.2.9 3.1.4 3.8.1 4.7c-.3.8-.5 1.7-.5 2.9C-.4 9.6-.4 10 .1 13.3c.1 1.2.3 2.1.6 2.9.4.9.9 1.6 1.6 2.3.7.7 1.4 1.2 2.3 1.6.8.3 1.7.5 2.9.6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.2-.1 2.1-.3 2.9-.6.9-.4 1.6-.9 2.3-1.6.7-.7 1.2-1.4 1.6-2.3.3-.8.5-1.7.6-2.9.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.2-.3-2.1-.6-2.9-.4-.9-.9-1.6-1.6-2.3C20.1.9 19.4.4 18.5.1c-.8-.3-1.7-.5-2.9-.6C15.7 0 15.3 0 12 0z"/></svg>
+                            </a>
+                            <a href="#" class="text-gray-400 transition-colors hover:text-white" aria-label="Facebook">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.12 8.43 9.95v-7.05H8.07v-2.9h2.36V9.41c0-2.33 1.39-3.62 3.52-3.62 1.02 0 2.09.18 2.09.18v2.29h-1.16c-1.14 0-1.49.7-1.49 1.42v1.7h2.53l-.4 2.9h-2.13v7.05C18.34 21.19 22 17.07 22 12.07z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                        <div class="mt-10">
+                            <div class="max-w-2xl px-4 mx-auto">
+                                <h4 class="mb-3 font-semibold text-white">Join our newsletter</h4>
+                                <form id="newsletter-form" class="flex gap-2" aria-label="Newsletter signup">
+                                    <label for="newsletter-email" class="sr-only">Email address</label>
+                                    <input id="newsletter-email" type="email" placeholder="Your email" required class="w-full px-4 py-2 text-gray-800 rounded-l-md" />
+                                    <button type="submit" class="px-4 py-2 font-semibold text-white bg-brand-600 rounded-r-md">Subscribe</button>
+                                </form>
+                                <p id="newsletter-response" class="hidden mt-2 text-sm text-green-400">Thanks — check your inbox.</p>
+                            </div>
+                        </div>
+                                        <div class="pt-8 mt-12 text-center text-gray-400 border-t border-gray-800">
+                                            <p>&copy; 2025 Auracare Corporation LTD. All rights reserved.</p>
+                                        </div>
+            </div>
+        </footer>
+
+        <!-- Mobile Menu -->
+        <div class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50" id="mobile-menu">
+            <div class="w-64 h-full bg-white shadow-xl">
+                <div class="flex items-center justify-between p-4 border-b">
+                    <a href="#" class="inline-flex items-center gap-3">
+                        <img src="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" alt="AuraCare logo" width="56" height="56" class="object-contain site-logo-sm" srcset="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png 1x" />
+                        <span class="sr-only">AuraCare</span>
+                    </a>
+                    <button id="menu-close" class="text-gray-600" aria-label="Close menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="p-4">
+                    <ul class="space-y-4">
+                        <li><a href="#" class="block text-gray-600 transition-colors hover:text-brand-600">Home</a></li>
+                        <li><a href="#about" class="block text-gray-600 transition-colors hover:text-brand-600">About</a></li>
+                        <li><a href="#products" class="block text-gray-600 transition-colors hover:text-brand-600">Shop</a></li>
+                        <li><a href="#faq" class="block text-gray-600 transition-colors hover:text-brand-600">FAQ</a></li>
+                        <li><a href="#contact" class="block text-gray-600 transition-colors hover:text-brand-600">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <script>
+            // Mobile menu toggle with backdrop close
+            (function () {
+                const menuOpen = document.getElementById('menu-open');
+                const menuClose = document.getElementById('menu-close');
+                const mobileMenu = document.getElementById('mobile-menu');
+
+                function openMenu() {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+
+                function closeMenu() {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+
+                menuOpen && menuOpen.addEventListener('click', openMenu);
+                menuClose && menuClose.addEventListener('click', closeMenu);
+
+                // click outside panel closes menu
+                mobileMenu && mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) closeMenu();
+                });
+            })();
+
+            // Contact form UX (no backend)
+            (function () {
+                const form = document.getElementById('contact-form');
+                const response = document.getElementById('form-response');
+                if (!form) return;
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    response.classList.remove('hidden');
+                    form.reset();
+                    setTimeout(() => response.classList.add('hidden'), 6000);
+                });
+            })();
+
+            // Newsletter signup UX (no backend)
+            (function () {
+                const nForm = document.getElementById('newsletter-form');
+                const nInput = document.getElementById('newsletter-email');
+                const nResponse = document.getElementById('newsletter-response');
+                if (!nForm) return;
+                nForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = nInput.value.trim();
+                    if (!email || !email.includes('@')) {
+                        nResponse.textContent = 'Please enter a valid email.';
+                        nResponse.classList.remove('hidden');
+                        nResponse.classList.remove('text-green-400');
+                        nResponse.classList.add('text-yellow-300');
+                        return;
+                    }
+                    nResponse.textContent = 'Thanks — check your inbox.';
+                    nResponse.classList.remove('hidden');
+                    nResponse.classList.remove('text-yellow-300');
+                    nResponse.classList.add('text-green-400');
+                    nForm.reset();
+                    setTimeout(() => nResponse.classList.add('hidden'), 6000);
+                });
+            })();
+
+            // FAQ accordion
+            (function () {
+                const toggles = document.querySelectorAll('.faq-toggle');
+                toggles.forEach((btn) => {
+                    const panel = btn.nextElementSibling;
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.addEventListener('click', () => {
+                        const expanded = btn.getAttribute('aria-expanded') === 'true';
+                        btn.setAttribute('aria-expanded', String(!expanded));
+                        if (panel) panel.classList.toggle('hidden');
+                    });
+                });
+            })();
+
+            // Desktop Shop dropdown (hover + accessible keyboard)
+            (function () {
+                const toggle = document.getElementById('shop-toggle');
+                const panel = document.getElementById('shop-dropdown');
+                if (!toggle || !panel) return;
+
+                function open() {
+                    panel.classList.remove('hidden');
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+                function close() {
+                    panel.classList.add('hidden');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+
+                // Click toggles
+                toggle.addEventListener('click', (e) => {
+                    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                    if (expanded) close(); else open();
+                });
+
+                // Close on escape and click outside
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') close();
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+                        close();
+                    }
+                });
+
+                // Open on hover for desktop users
+                const parent = document.getElementById('shop-nav');
+                parent.addEventListener('mouseenter', () => { if (window.innerWidth >= 768) open(); });
+                parent.addEventListener('mouseleave', () => { if (window.innerWidth >= 768) close(); });
+
+                // Keyboard: open with ArrowDown
+                toggle.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown') { e.preventDefault(); open(); const first = panel.querySelector('[role="menuitem"]'); first && first.focus(); }
+                });
+            })();
+        </script>
+    </body>
+</html>
