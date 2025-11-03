@@ -73,11 +73,36 @@
                 /* Small helper to keep logos responsive; slightly larger for a stronger premium brand */
                 .site-logo { max-height: 128px; width: auto; }
                 .site-logo-sm { max-height: 80px; width: auto; }
-                /* Footer logo helper (explicitly larger when requested) */
-                .footer-logo { max-height: 192px; width: auto; display: block; margin: 0; }
+                /* Footer logo helper (responsive to keep footer compact while retaining a large mark on wide screens) */
+                .footer-logo { max-height: 120px; width: auto; display: block; margin: 0; }
+                @media (min-width: 768px) { .footer-logo { max-height: 160px; } }
+                @media (min-width: 1024px) { .footer-logo { max-height: 192px; } }
                 /* Remove surrounding spacing from the brand block */
                 .footer-brand { padding: 0; }
                 .footer-brand .brand-desc { margin-top: .25rem; }
+
+                /* Typography scale & rhythm improvements */
+                html { font-size: 16px; }
+                body { font-size: 1rem; line-height: 1.65; color: #0f1724; }
+
+                /* Headings: stronger visual hierarchy */
+                h1 { font-size: clamp(1.875rem, 1.6rem + 2.6vw, 3rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; color: #0b1220; }
+                h2 { font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2rem); line-height: 1.12; font-weight: 700; letter-spacing: -0.01em; }
+                h3 { font-size: clamp(1.125rem, 1rem + .8vw, 1.25rem); line-height: 1.25; font-weight: 600; }
+                h4, h5, h6 { font-weight: 600; }
+
+                /* Lead paragraph for hero/intro copy */
+                .lead { font-size: 1.0625rem; color: #374151; line-height: 1.6; }
+
+                /* Nav links and small UI text */
+                nav a[role="menuitem"], .site-nav a { font-weight: 600; letter-spacing: 0.02em; }
+                .text-sm { line-height: 1.4; }
+
+                /* Buttons: slightly larger text for CTA prominence */
+                .btn-primary { font-size: 1rem; padding: .7rem 1.25rem; }
+
+                /* Small caps for meta/labels */
+                .meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-50); }
 
                 /* Scroll reveal (lightweight, dependency-free) */
                 /* Slightly slower, smoother reveal for a premium feel */
@@ -512,9 +537,9 @@
         </section>
 
     <!-- Footer (compact) -->
-    <footer class="py-8 text-white reveal-on-scroll" style="background: var(--brand-700);">
+    <footer class="py-6 text-white reveal-on-scroll" style="background: var(--brand-700);">
             <div class="container px-4 mx-auto">
-                <div class="grid items-start gap-4 md:grid-cols-3">
+                <div class="grid items-center justify-center gap-6 text-center md:grid-cols-3">
                     <!-- Brand (compact) -->
                     <div class="footer-brand">
                         <a href="#" class="inline-flex items-center gap-0">
@@ -536,8 +561,8 @@
                     </div>
 
                     <!-- Links (compact) -->
-                    <div class="grid grid-cols-2 gap-4 md:px-4">
-                        <div>
+                    <div class="grid grid-cols-2 gap-4 md:px-4 justify-items-center">
+                        <div class="text-center">
                             <h4 class="mb-2 text-sm font-semibold text-white">Shop</h4>
                             <ul class="space-y-1 text-sm text-gray-300">
                                 <li><a href="#products" class="hover:text-white">All pads</a></li>
@@ -546,7 +571,7 @@
                             </ul>
                         </div>
 
-                        <div>
+                        <div class="text-center">
                             <h4 class="mb-2 text-sm font-semibold text-white">Support</h4>
                             <ul class="space-y-1 text-sm text-gray-300">
                                 <li><a href="#faq" class="hover:text-white">FAQ & returns</a></li>
@@ -566,7 +591,7 @@
                         </form>
                         <p id="newsletter-response" class="hidden mt-2 text-xs text-green-400">Thanks — check your inbox.</p>
 
-                        <div class="mt-4">
+                        <div class="mt-2">
                             <p class="mb-1 text-xs text-gray-300">We accept</p>
                             <div class="footer-payment-wrap" aria-hidden="false">
                                 <span class="footer-badge" aria-hidden="false">
@@ -603,7 +628,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col items-center pt-4 mt-8 text-xs text-gray-300 border-t border-white/8 md:flex-row md:justify-between">
+                <div class="flex flex-col items-center pt-3 mt-6 text-xs text-gray-300 border-t border-white/8 md:flex-row md:justify-center md:space-x-6">
                     <p>&copy; 2025 AuraCare Corporation LTD.</p>
                     <div class="flex items-center gap-3 mt-2 md:mt-0">
                         <a href="#" class="text-xs hover:text-white">Privacy</a>
