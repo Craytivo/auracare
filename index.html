@@ -16,8 +16,8 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
         />
-        <!-- Preload hero image (improves LCP) -->
-        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1400&q=80" />
+    <!-- Preload hero image (improves LCP) -->
+    <link rel="preload" as="image" href="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" />
             <style>
                 :root{
                     /* Brand tokens tuned to the uploaded blue & cream logo */
@@ -70,9 +70,51 @@
                                 .btn-primary { transition: none !important; transform: none !important; }
                             }
 
-                /* Small helper to keep logos responsive */
-                .site-logo { max-height: 88px; width: auto; }
-                .site-logo-sm { max-height: 56px; width: auto; }
+                /* Small helper to keep logos responsive; slightly larger for a stronger premium brand */
+                .site-logo { max-height: 128px; width: auto; }
+                .site-logo-sm { max-height: 80px; width: auto; }
+                /* Footer logo helper (responsive to keep footer compact while retaining a large mark on wide screens) */
+                .footer-logo { max-height: 120px; width: auto; display: block; margin: 0; }
+                @media (min-width: 768px) { .footer-logo { max-height: 160px; } }
+                @media (min-width: 1024px) { .footer-logo { max-height: 192px; } }
+                /* Remove surrounding spacing from the brand block */
+                .footer-brand { padding: 0; }
+                .footer-brand .brand-desc { margin-top: .25rem; }
+
+                /* Typography scale & rhythm improvements */
+                html { font-size: 16px; }
+                body { font-size: 1rem; line-height: 1.65; color: #0f1724; }
+
+                /* Headings: stronger visual hierarchy */
+                h1 { font-size: clamp(1.875rem, 1.6rem + 2.6vw, 3rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; color: #0b1220; }
+                h2 { font-size: clamp(1.5rem, 1.2rem + 1.6vw, 2rem); line-height: 1.12; font-weight: 700; letter-spacing: -0.01em; }
+                h3 { font-size: clamp(1.125rem, 1rem + .8vw, 1.25rem); line-height: 1.25; font-weight: 600; }
+                h4, h5, h6 { font-weight: 600; }
+
+                /* Lead paragraph for hero/intro copy */
+                .lead { font-size: 1.0625rem; color: #374151; line-height: 1.6; }
+
+                /* Nav links and small UI text */
+                nav a[role="menuitem"], .site-nav a { font-weight: 600; letter-spacing: 0.02em; }
+                .text-sm { line-height: 1.4; }
+
+                /* Buttons: slightly larger text for CTA prominence */
+                .btn-primary { font-size: 1rem; padding: .7rem 1.25rem; }
+
+                /* Small caps for meta/labels */
+                .meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-50); }
+
+                /* Scroll reveal (lightweight, dependency-free) */
+                /* Slightly slower, smoother reveal for a premium feel */
+                .reveal-on-scroll { opacity: 0; transform: translateY(18px); transition: opacity .95s cubic-bezier(.2,.9,.2,1), transform .95s cubic-bezier(.2,.9,.2,1); will-change: opacity, transform; }
+                .reveal-on-scroll.is-visible { opacity: 1; transform: none; }
+                @media (prefers-reduced-motion: reduce) { .reveal-on-scroll, .reveal-on-scroll.is-visible { transition: none !important; transform: none !important; } }
+                /* Footer-specific helpers for a sleek, low-profile look */
+                .footer-newsletter-input { background: white; color: #0f1724; padding-left: .75rem; padding-right: .5rem; border-top-left-radius: .375rem; border-bottom-left-radius: .375rem; height: 36px; font-size: 0.9rem; }
+                .footer-newsletter-btn { height: 36px; padding-left: .75rem; padding-right: .75rem; border-top-right-radius: .375rem; border-bottom-right-radius: .375rem; font-size: 0.9rem; }
+                .footer-badge { display: inline-flex; align-items: center; justify-content: center; padding: 3px; border-radius: 6px; background: rgba(255,255,255,0.04); }
+                .footer-payment-wrap { display: flex; gap: .4rem; align-items: center; }
+                @media (max-width: 640px) { .footer-newsletter-input, .footer-newsletter-btn { height: 34px; font-size: 0.85rem; } }
             </style>
         <!-- Local built Tailwind (optional) -->
         <link rel="stylesheet" href="dist/styles.css" />
@@ -80,13 +122,13 @@
 
     <body class="antialiased text-gray-800">
         <!-- Header -->
-        <header class="fixed z-50 w-full shadow-sm bg-white/90 backdrop-blur-sm">
-            <div class="container px-4 py-4 mx-auto">
+        <header class="fixed z-50 w-full transition-shadow border-b shadow-md bg-white/95 backdrop-blur-sm border-white/10">
+            <div class="container px-4 py-5 mx-auto md:py-6">
                 <nav class="relative flex items-center justify-between" aria-label="Main navigation">
                     <!-- Left: logo only -->
                     <div class="flex items-center">
                         <a href="#" class="inline-flex items-center gap-3">
-                            <img src="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" alt="AuraCare logo" width="88" height="88" class="object-contain site-logo" srcset="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png 1x" />
+                            <img src="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" alt="AuraCare logo" width="128" height="128" class="object-contain site-logo" srcset="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png 1x" />
                             <span class="sr-only">AuraCare — Period care & sanitary pads</span>
                         </a>
                     </div>
@@ -121,7 +163,7 @@
 
                     <!-- Right: CTA (desktop) + mobile menu button -->
                     <div class="flex items-center space-x-4">
-                        <a href="#products" class="hidden px-4 py-2 text-sm font-semibold text-white rounded-full md:inline-block bg-brand-600 hover:bg-brand-700">Shop now</a>
+                        <a href="#products" class="hidden px-5 py-2 text-base font-semibold text-white rounded-full md:inline-block bg-brand-600 hover:bg-brand-700">Shop now</a>
 
                         <button id="menu-open" class="text-gray-600 md:hidden" aria-label="Open menu">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,7 +177,7 @@
 
             <!-- Hero -->
             <main>
-            <section class="relative pt-32 pb-20 overflow-hidden md:pt-36 bg-gradient-to-br from-brand-50 to-white">
+            <section class="relative pt-32 pb-20 overflow-hidden md:pt-48 lg:pt-56 bg-gradient-to-br from-brand-50 to-white">
                 <!-- subtle decorative background -->
                 <svg class="hero-bg" aria-hidden="true" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
                     <defs>
@@ -152,7 +194,7 @@
                 <div class="container px-4 mx-auto">
                     <div class="grid items-center gap-8 md:grid-cols-2">
                         <!-- Hero text -->
-                        <div class="max-w-2xl mx-auto text-center md:text-left">
+                        <div class="max-w-2xl mx-auto text-center md:text-left reveal-on-scroll">
                             <p class="mb-3 text-sm font-semibold tracking-wider uppercase text-brand-600">Dermatologically tested • Made in South Africa</p>
                             <h1 class="mb-4 text-4xl font-extrabold text-gray-900 md:text-5xl">Confidence. Comfort. Protection — every day.</h1>
                             <p class="mb-6 text-lg text-gray-600">Soft, secure sanitary pads that move with you — ultra-thin absorption and leak-lock technology for total peace of mind.</p>
@@ -182,8 +224,9 @@
                         </div>
 
                         <!-- Hero image (right on desktop) -->
-                        <div class="order-first max-w-2xl mx-auto md:order-none md:mx-0">
-                            <img loading="eager" decoding="async" width="1400" height="900" src="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1400&q=80" srcset="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=800&q=80 800w, https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1200&q=80 1200w, https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=1400&q=80 1400w" sizes="(max-width: 768px) 100vw, 50vw" alt="AuraCare product pack on soft fabric" class="object-cover w-full h-auto rounded-lg shadow-xl" />
+                        <div class="flex items-center justify-center order-first max-w-2xl mx-auto md:order-none md:mx-0">
+                            <!-- Use brand logo in hero for stronger brand presence -->
+                            <img loading="eager" decoding="async" width="600" height="600" src="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" alt="AuraCare logo" class="object-contain w-48 p-6 mx-auto bg-white rounded-lg shadow-xl md:w-64 lg:w-80 reveal-on-scroll" />
                         </div>
                     </div>
                 </div>
@@ -200,16 +243,16 @@
                 </div>
 
                 <!-- Stats row -->
-                <div class="grid grid-cols-1 gap-4 mt-8 md:grid-cols-3">
-                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50">
+                    <div class="grid grid-cols-1 gap-4 mt-8 md:grid-cols-3">
+                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50 reveal-on-scroll">
                         <div class="text-2xl font-extrabold text-brand-600">120k+</div>
                         <div class="mt-1 text-sm text-gray-600">Packs sold</div>
                     </div>
-                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50">
+                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50 reveal-on-scroll">
                         <div class="text-2xl font-extrabold text-brand-600">4.8★</div>
                         <div class="mt-1 text-sm text-gray-600">Average rating</div>
                     </div>
-                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50">
+                    <div class="flex flex-col items-center p-6 rounded-lg bg-brand-50 reveal-on-scroll">
                         <div class="text-2xl font-extrabold text-brand-600">98%</div>
                         <div class="mt-1 text-sm text-gray-600">Customer satisfaction</div>
                     </div>
@@ -217,9 +260,9 @@
 
                 <div class="grid items-center gap-8 mt-10 md:grid-cols-2">
                     <!-- Image -->
-                        <div class="order-last md:order-first">
+                        <div class="order-last md:order-first reveal-on-scroll">
                             <!-- Constrain height so the image isn't overly tall on desktop; object-cover keeps composition -->
-                            <img loading="lazy" decoding="async" width="1000" height="700" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80" srcset="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80 600w, https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80 1000w" sizes="(max-width: 768px) 100vw, 50vw" alt="Woman smiling holding pads" class="object-cover w-full h-56 rounded-lg shadow-xl md:h-72 lg:h-96" />
+                            <img loading="lazy" decoding="async" width="1000" height="700" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80" srcset="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80 600w, https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80 1000w" sizes="(max-width: 768px) 100vw, 50vw" alt="Woman smiling holding pads" class="object-cover w-full h-56 rounded-lg shadow-xl md:h-72 lg:h-96 reveal-on-scroll" />
                         </div>
 
                     <!-- Content -->
@@ -264,9 +307,9 @@
 
                 <div class="grid gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3">
                     <!-- Product card (reusable pattern) -->
-                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1 reveal-on-scroll">
                         <div class="relative">
-                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1541575163232-2a2d2a9f6e8f?auto=format&fit=crop&w=800&q=80" alt="AuraComfort Ultra pack - best seller" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
+                            <img loading="lazy" decoding="async" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><rect width='100%25' height='100%25' fill='%23f7f6f2'/><text x='50%25' y='50%25' font-family='Inter, sans-serif' font-size='32' fill='%2335509A' text-anchor='middle' dominant-baseline='middle'>AuraComfort%20Ultra</text></svg>" alt="AuraComfort Ultra pack - best seller" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
                             <span class="absolute px-2 py-1 text-xs font-semibold text-white rounded top-3 left-3 bg-brand-600">Best seller</span>
                         </div>
                         <div class="p-6">
@@ -286,7 +329,7 @@
                         </div>
                     </article>
 
-                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1 reveal-on-scroll">
                         <div class="relative">
                             <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="AuraThin pad on fabric" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
                             <span class="absolute px-2 py-1 text-xs font-semibold text-white bg-gray-800 rounded top-3 left-3">Slim</span>
@@ -305,7 +348,7 @@
                         </div>
                     </article>
 
-                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1 reveal-on-scroll">
                         <div class="relative">
                             <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="AuraOvernight pad" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
                             <span class="absolute px-2 py-1 text-xs font-semibold text-white rounded top-3 left-3 bg-brand-600">Overnight</span>
@@ -325,9 +368,9 @@
                     </article>
 
                     <!-- Additional products (kept concise) -->
-                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1 reveal-on-scroll">
                         <div class="relative">
-                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1520975911984-83a363c8deb6?auto=format&fit=crop&w=800&q=80" alt="AuraSensitive pack" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
+                            <img loading="lazy" decoding="async" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><rect width='100%25' height='100%25' fill='%23f7f6f2'/><text x='50%25' y='50%25' font-family='Inter, sans-serif' font-size='28' fill='%2335509A' text-anchor='middle' dominant-baseline='middle'>AuraSensitive</text></svg>" alt="AuraSensitive pack" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
                         </div>
                         <div class="p-6">
                             <h3 class="text-lg font-semibold">AuraSensitive</h3>
@@ -342,7 +385,7 @@
                         </div>
                     </article>
 
-                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1">
+                    <article class="relative overflow-hidden transition-transform bg-white shadow-sm rounded-xl hover:shadow-lg hover:-translate-y-1 reveal-on-scroll">
                         <div class="relative">
                             <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Starter Trial pack" class="object-cover w-full h-44 sm:h-52 lg:h-56" />
                             <span class="absolute px-2 py-1 text-xs font-semibold text-gray-800 bg-yellow-400 rounded top-3 right-3">New</span>
@@ -368,17 +411,17 @@
             <div class="container px-4 mx-auto">
                 <h2 id="testimonials-heading" class="mb-8 text-3xl font-bold text-center">What customers say</h2>
                 <div class="grid gap-6 md:grid-cols-3">
-                    <figure class="p-6 rounded-lg bg-gray-50">
+                    <figure class="p-6 rounded-lg bg-gray-50 reveal-on-scroll">
                         <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=128&q=80" alt="Customer avatar" class="w-12 h-12 mb-4 rounded-full" />
                         <blockquote class="italic text-gray-700">"Feels like wearing nothing — yet I never worry about leaks. AuraComfort changed my monthly routine."</blockquote>
                         <figcaption class="mt-3 text-sm text-gray-600">— Maya R., Verified buyer</figcaption>
                     </figure>
-                    <figure class="p-6 rounded-lg bg-gray-50">
+                    <figure class="p-6 rounded-lg bg-gray-50 reveal-on-scroll">
                         <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=128&q=80" alt="Customer avatar" class="w-12 h-12 mb-4 rounded-full" />
                         <blockquote class="italic text-gray-700">"No irritation and sustainable packaging. Finally a brand I can trust."</blockquote>
                         <figcaption class="mt-3 text-sm text-gray-600">— Olivia T., Repeat customer</figcaption>
                     </figure>
-                    <figure class="p-6 rounded-lg bg-gray-50">
+                    <figure class="p-6 rounded-lg bg-gray-50 reveal-on-scroll">
                         <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1545996124-1f1f1b2b9f4f?auto=format&fit=crop&w=128&q=80" alt="Customer avatar" class="w-12 h-12 mb-4 rounded-full" />
                         <blockquote class="italic text-gray-700">"Overnight coverage was a game changer. I can sleep through the night worry-free."</blockquote>
                         <figcaption class="mt-3 text-sm text-gray-600">— Sofia L., Customer</figcaption>
@@ -394,7 +437,7 @@
                 <p class="max-w-2xl mx-auto mb-8 text-sm text-center text-gray-600">Quick answers to common questions — if you need more help our team is ready to assist via phone or email.</p>
 
                 <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="overflow-hidden border rounded-lg">
+                    <div class="overflow-hidden border rounded-lg reveal-on-scroll">
                         <button id="faq-btn-1" aria-expanded="false" aria-controls="faq-panel-1" class="flex items-center justify-between w-full px-5 py-4 text-left faq-toggle">
                             <span class="font-medium">Are AuraCare pads suitable for sensitive skin?</span>
                             <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
@@ -402,7 +445,7 @@
                         <div id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" class="hidden px-5 py-4 faq-panel">Yes — our AuraSensitive line is hypoallergenic, fragrance-free, and dermatologically tested. We avoid common irritants and use breathable materials.</div>
                     </div>
 
-                    <div class="overflow-hidden border rounded-lg">
+                    <div class="overflow-hidden border rounded-lg reveal-on-scroll">
                         <button id="faq-btn-2" aria-expanded="false" aria-controls="faq-panel-2" class="flex items-center justify-between w-full px-5 py-4 text-left faq-toggle">
                             <span class="font-medium">How long does shipping take?</span>
                             <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
@@ -410,7 +453,7 @@
                         <div id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" class="hidden px-5 py-4 faq-panel">Standard shipping is 3–7 business days within South Africa. Expedited options and express courier add-ons are available at checkout.</div>
                     </div>
 
-                    <div class="overflow-hidden border rounded-lg">
+                    <div class="overflow-hidden border rounded-lg reveal-on-scroll">
                         <button id="faq-btn-3" aria-expanded="false" aria-controls="faq-panel-3" class="flex items-center justify-between w-full px-5 py-4 text-left faq-toggle">
                             <span class="font-medium">Can I return unopened packs?</span>
                             <svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
@@ -428,7 +471,7 @@
 
                 <div class="grid gap-10 md:grid-cols-2">
                     <!-- Contact info (left) -->
-                    <div class="max-w-md">
+                    <div class="max-w-md reveal-on-scroll">
                         <p class="mb-4 text-gray-600">We're here to help — for wholesale enquiries, samples, or product questions reach out below or call our Customer Care.</p>
 
                         <div class="mb-6">
@@ -444,7 +487,7 @@
 
                         <div class="mb-6">
                             <h3 class="mb-2 text-sm font-semibold">Head Office</h3>
-                            <address class="not-italic text-gray-700">Unit 5, Health House, Cape Town, South Africa</address>
+                            <address class="not-italic text-gray-700">28 Silverleaf Street, Van Dykpark, Boksburg, Gauteng 1459</address>
                         </div>
 
                         <div class="p-4 rounded-lg bg-brand-50">
@@ -493,56 +536,105 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="py-12 text-white bg-gray-900">
+    <!-- Footer (compact) -->
+    <footer class="py-6 text-white reveal-on-scroll" style="background: var(--brand-700);">
             <div class="container px-4 mx-auto">
-                <div class="grid gap-8 md:grid-cols-4">
-                    <div>
-                        <h3 class="mb-4 text-xl font-bold">AuraCare</h3>
-                        <p class="text-gray-400">Period care made for comfort, confidence, and sustainability.</p>
-                    </div>
-                    <div>
-                        <h4 class="mb-4 text-lg font-semibold">Shop</h4>
-                        <ul class="space-y-2">
-                            <li><a href="#products" class="text-gray-400 transition-colors hover:text-white">All Pads</a></li>
-                            <li><a href="#products" class="text-gray-400 transition-colors hover:text-white">Starter Pack</a></li>
-                            <li><a href="#contact" class="text-gray-400 transition-colors hover:text-white">Wholesale</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="mb-4 text-lg font-semibold">Support</h4>
-                                    <ul class="space-y-2 text-gray-400">
-                                        <li>Customer Care: +27 (0)21 555 1234 (Mon–Fri, 08:00–17:00 SAST)</li>
-                                        <li>Email: support@auracare.co.za</li>
-                                        <li>FAQ & Returns</li>
-                                    </ul>
-                    </div>
-                    <div>
-                        <h4 class="mb-4 text-lg font-semibold">Follow Us</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-gray-400 transition-colors hover:text-white" aria-label="Instagram">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.4.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.4-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.4-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.2-.5-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.4.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.8.1 4.9.3 4.1.6 3.2 1 2.5 1.5 1.8 2.2.9 3.1.4 3.8.1 4.7c-.3.8-.5 1.7-.5 2.9C-.4 9.6-.4 10 .1 13.3c.1 1.2.3 2.1.6 2.9.4.9.9 1.6 1.6 2.3.7.7 1.4 1.2 2.3 1.6.8.3 1.7.5 2.9.6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.2-.1 2.1-.3 2.9-.6.9-.4 1.6-.9 2.3-1.6.7-.7 1.2-1.4 1.6-2.3.3-.8.5-1.7.6-2.9.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.2-.3-2.1-.6-2.9-.4-.9-.9-1.6-1.6-2.3C20.1.9 19.4.4 18.5.1c-.8-.3-1.7-.5-2.9-.6C15.7 0 15.3 0 12 0z"/></svg>
+                <div class="grid items-center justify-center gap-6 text-center md:grid-cols-3">
+                    <!-- Brand (compact) -->
+                    <div class="footer-brand">
+                        <a href="#" class="inline-flex items-center gap-0">
+                            <img src="assets/images/image.png" alt="AuraCare — footer image" width="192" height="192" class="object-contain footer-logo" />
+                        </a>
+                        <p class="max-w-xs mt-1 text-sm text-gray-300 brand-desc">Period care for comfort and confidence. Proudly made in South Africa.</p>
+
+                        <div class="flex items-center gap-2 mt-2">
+                            <a href="#" class="text-gray-300 hover:text-white" aria-label="X (Twitter)">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M7 8.5c1.2-1 2.7-1.4 4.3-1.2 1.4.2 2.6.9 3.4 2 1.2 1.6 1 3.9-.5 5.1-1.3 1-3 1.2-4.4.6" stroke="currentColor"/>
+                                    <path d="M9 13.5c-.6 1.8 1.4 3.3 3 2.1" stroke="currentColor"/>
+                                </svg>
                             </a>
-                            <a href="#" class="text-gray-400 transition-colors hover:text-white" aria-label="Facebook">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.12 8.43 9.95v-7.05H8.07v-2.9h2.36V9.41c0-2.33 1.39-3.62 3.52-3.62 1.02 0 2.09.18 2.09.18v2.29h-1.16c-1.14 0-1.49.7-1.49 1.42v1.7h2.53l-.4 2.9h-2.13v7.05C18.34 21.19 22 17.07 22 12.07z"/></svg>
+                            <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.12 8.43 9.95v-7.05H8.07v-2.9h2.36V9.41c0-2.33 1.39-3.62 3.52-3.62 1.02 0 2.09.18 2.09.18v2.29h-1.16c-1.14 0-1.49.7-1.49 1.42v1.7h2.53l-.4 2.9h-2.13v7.05C18.34 21.19 22 17.07 22 12.07z"/></svg>
                             </a>
+                        </div>
+                    </div>
+
+                    <!-- Links (compact) -->
+                    <div class="grid grid-cols-2 gap-4 md:px-4 justify-items-center">
+                        <div class="text-center">
+                            <h4 class="mb-2 text-sm font-semibold text-white">Shop</h4>
+                            <ul class="space-y-1 text-sm text-gray-300">
+                                <li><a href="#products" class="hover:text-white">All pads</a></li>
+                                <li><a href="#products" class="hover:text-white">AuraComfort Ultra</a></li>
+                                <li><a href="#products" class="hover:text-white">Starter pack</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="text-center">
+                            <h4 class="mb-2 text-sm font-semibold text-white">Support</h4>
+                            <ul class="space-y-1 text-sm text-gray-300">
+                                <li><a href="#faq" class="hover:text-white">FAQ & returns</a></li>
+                                <li class="text-gray-300">+27 (0)21 555 1234</li>
+                                <li><a href="mailto:support@auracare.co.za" class="hover:text-white">support@auracare.co.za</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter / payments (compact) -->
+                    <div>
+                        <h4 class="mb-2 text-sm font-semibold text-white">Stay updated</h4>
+                        <form id="newsletter-form" class="flex items-center gap-2" aria-label="Newsletter signup">
+                            <label for="newsletter-email" class="sr-only">Email address</label>
+                            <input id="newsletter-email" type="email" placeholder="Email" required class="w-full footer-newsletter-input" />
+                            <button type="submit" class="px-3 py-1 font-semibold text-white footer-newsletter-btn bg-brand-600">Join</button>
+                        </form>
+                        <p id="newsletter-response" class="hidden mt-2 text-xs text-green-400">Thanks — check your inbox.</p>
+
+                        <div class="mt-2">
+                            <p class="mb-1 text-xs text-gray-300">We accept</p>
+                            <div class="footer-payment-wrap" aria-hidden="false">
+                                <span class="footer-badge" aria-hidden="false">
+                                    <!-- Visa -->
+                                    <svg class="w-8 h-4" viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visa" focusable="false">
+                                        <g transform="translate(6,6)">
+                                            <rect width="52" height="28" rx="3" fill="#1A56DB"/>
+                                            <text x="26" y="20" font-family="Inter, sans-serif" font-size="10" fill="#fff" text-anchor="middle">VISA</text>
+                                        </g>
+                                    </svg>
+                                </span>
+
+                                <span class="footer-badge" aria-hidden="false">
+                                    <!-- Mastercard -->
+                                    <svg class="w-8 h-4" viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mastercard" focusable="false">
+                                        <g transform="translate(8,6)">
+                                            <circle cx="14" cy="14" r="9" fill="#FF5F00"/>
+                                            <circle cx="26" cy="14" r="9" fill="#EB001B"/>
+                                        </g>
+                                    </svg>
+                                </span>
+
+                                <span class="footer-badge" aria-hidden="false">
+                                    <!-- PayPal -->
+                                    <svg class="w-8 h-4" viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PayPal" focusable="false">
+                                        <g transform="translate(6,6)">
+                                            <path d="M6 23 L12 10 L22 10 L16 23 Z" fill="#003087"/>
+                                            <text x="36" y="18" font-family="Inter, sans-serif" font-size="8" fill="#90CDF4">PayPal</text>
+                                        </g>
+                                    </svg>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                        <div class="mt-10">
-                            <div class="max-w-2xl px-4 mx-auto">
-                                <h4 class="mb-3 font-semibold text-white">Join our newsletter</h4>
-                                <form id="newsletter-form" class="flex gap-2" aria-label="Newsletter signup">
-                                    <label for="newsletter-email" class="sr-only">Email address</label>
-                                    <input id="newsletter-email" type="email" placeholder="Your email" required class="w-full px-4 py-2 text-gray-800 rounded-l-md" />
-                                    <button type="submit" class="px-4 py-2 font-semibold text-white bg-brand-600 rounded-r-md">Subscribe</button>
-                                </form>
-                                <p id="newsletter-response" class="hidden mt-2 text-sm text-green-400">Thanks — check your inbox.</p>
-                            </div>
-                        </div>
-                                        <div class="pt-8 mt-12 text-center text-gray-400 border-t border-gray-800">
-                                            <p>&copy; 2025 Auracare Corporation LTD. All rights reserved.</p>
-                                        </div>
+
+                <div class="flex flex-col items-center pt-3 mt-6 text-xs text-gray-300 border-t border-white/8 md:flex-row md:justify-center md:space-x-6">
+                    <p>&copy; 2025 AuraCare Corporation LTD.</p>
+                    <div class="flex items-center gap-3 mt-2 md:mt-0">
+                        <a href="#" class="text-xs hover:text-white">Privacy</a>
+                        <a href="#" class="text-xs hover:text-white">Terms</a>
+                    </div>
+                </div>
             </div>
         </footer>
 
@@ -551,7 +643,7 @@
             <div class="w-64 h-full bg-white shadow-xl">
                 <div class="flex items-center justify-between p-4 border-b">
                     <a href="#" class="inline-flex items-center gap-3">
-                        <img src="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" alt="AuraCare logo" width="56" height="56" class="object-contain site-logo-sm" srcset="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png 1x" />
+                        <img src="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png" alt="AuraCare logo" width="68" height="68" class="object-contain site-logo-sm" srcset="assets/images/Blue_and_Cream_Elegant_Skincare_Brand_Logo-removebg-preview.png 1x" />
                         <span class="sr-only">AuraCare</span>
                     </a>
                     <button id="menu-close" class="text-gray-600" aria-label="Close menu">
@@ -691,6 +783,22 @@
                 toggle.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowDown') { e.preventDefault(); open(); const first = panel.querySelector('[role="menuitem"]'); first && first.focus(); }
                 });
+            })();
+
+            // Scroll reveal animations (IntersectionObserver)
+            (function () {
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const items = document.querySelectorAll('.reveal-on-scroll');
+                if (!items || items.length === 0) return;
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+                items.forEach((el) => io.observe(el));
             })();
         </script>
     </body>
